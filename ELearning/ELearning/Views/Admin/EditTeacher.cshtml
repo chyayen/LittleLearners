@@ -1,0 +1,210 @@
+﻿@model ELearning.Models.TeacherModel
+@using System.Web.Helpers
+@{
+    ViewBag.Title = "Edit Teacher";
+    Random _random = new Random(); 
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("ManageTeachers")">Teachers</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="card">
+        <div class="card-body pt-3">
+            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()"><i class="bi bi-arrow-left-circle"></i> Back</button>
+            <hr class="border-light-subtle" />
+
+            @Html.Raw(TempData["AlertMessage"])
+
+            @using (Html.BeginForm("EditTeacher", "Admin", FormMethod.Post, new { @class = "g-3", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(m => m.ID)
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Profile Image</label>
+                    <div class="col-sm-10">
+                        <img src="~/Images/Users/@Model.DefaultImageName?v=@_random.Next()" alt="@Model.UserName" class="img-thumbnail mb-2" width="150">
+                        @Html.TextBoxFor(m => m.ImageFile, new { @class = "form-control", type = "file", accept = "image/jpg, image/png, image/jpeg" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">User Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Class</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(m => m.ClassIDs, new SelectList(Model.ClassList, "Value", "Text"), new { @class = "form-select", required = "", multiple = "" })
+                    </div>
+                </div>
+
+                 <!-- Sections Container for displaying sections dynamically -->
+                <div id="sectionsContainer">
+                    @foreach (var classSection in Model.ClassSectionSelections)
+                    {
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Select Section for @classSection.ClassName</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" name="ClassSectionSelections[@classSection.ClassID].SectionID" required>
+                                    @foreach (var sect in classSection.Sections)
+                                    {
+                                        <option value="@sect.ID" @(sect.ID == classSection.SectionID ? "selected" : "")>
+                                            @sect.Name
+                                        </option>
+                                    }
+                                </select> 
+                                <input type="hidden" name="ClassSectionSelections[@classSection.ClassID].ClassID" value="@classSection.ClassID" />
+                            </div>
+                        </div>
+                    }
+                    @* Additional section dropdowns will be added dynamically *@
+                </div>
+
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Active</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-switch">
+                            @Html.HiddenFor(m => m.IsActive)
+                            <input class="form-check-input" type="checkbox" id="IsActiveChkbx" @Html.Raw(Model.IsActive ? "checked" : "") />
+                            <label class="form-check-label" for="IsActiveChkbx">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Verify</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-switch">
+                            @Html.HiddenFor(m => m.IsVerified)
+                            <input class="form-check-input" type="checkbox" id="IsVerifiedChkbx" @Html.Raw(Model.IsVerified ? "checked" : "") />
+                            <label class="form-check-label" for="IsVerifiedChkbx">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <label for="inputText" class="col-sm-2 col-form-label">&nbsp;</label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-sm btn-primary" id="btnUpdateTeacher">Update</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('#IsActiveChkbx').change(function () {
+                $('#IsActive').val($(this).is(':checked'));
+            });
+            $('#IsVerifiedChkbx').change(function () {
+                $('#IsVerified').val($(this).is(':checked'));
+            });
+
+            $('#ClassIDs').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: "-- Select --",
+                closeOnSelect: false,
+            });
+
+            // Set the pre-selected values in the ClassIDs Select2 and trigger change
+            var preSelectedClasses = @Html.Raw(Json.Encode(Model.ClassIDs ?? new List<int>()));
+            $('#ClassIDs').val(preSelectedClasses).trigger('change');
+
+            // Event listener for when the user selects or deselects a class
+            $('#ClassIDs').change(function () {
+                var selectedClasses = $(this).val(); // Get selected class IDs
+
+                // Clear the sectionsContainer
+                $('#sectionsContainer').empty();
+
+                // For each selected class, create a new dropdown for sections
+                $.each(selectedClasses, function (index, classId) {
+                    // Create a new section dropdown
+                    createSectionDropdown(classId);
+                });
+            });
+
+            function createSectionDropdown(classId) {
+                // Get the class name (the selected option's text)
+                var className = $('#ClassIDs option[value="' + classId + '"]').text();
+
+                // Create the section dropdown container
+                var sectionDiv = $('<div class="row mb-3"></div>');
+                var label = $('<label class="col-sm-2 col-form-label">Select Section for ' + className + '</label>');
+                var select = $('<div class="col-sm-10"><select class="form-select" name="ClassSectionSelections[' + classId + '].SectionID" required></select></div>');
+                var hfClassID = $('<input type="hidden" name="ClassSectionSelections[' + classId + '].ClassID" value="' + classId + '" />');
+
+                sectionDiv.append(label);
+                sectionDiv.append(select);
+                sectionDiv.append(hfClassID);
+                $('#sectionsContainer').append(sectionDiv);
+
+                // Fetch sections for the selected class
+                $.ajax({
+                    url: '/Admin/GetSectionsByClass',
+                    type: 'POST',
+                    data: { classId: classId },
+                    success: function (data) {
+                        var sectionSelect = select.find('select');
+                        sectionSelect.empty(); // Clear previous options
+
+                        // Populate section options
+                        $.each(data, function (index, section) {
+                            var option = $('<option></option>')
+                                .val(section.SectionID)
+                                .text(section.SectionName);
+
+                            // Check if the section should be pre-selected
+                            var preSelected = @Html.Raw(Json.Encode(Model.ClassSectionSelections))
+                    .find(item => item.ClassID == classId && item.SectionID == section.SectionID);
+                            if (preSelected) {
+                                option.prop('selected', true);
+                            }
+
+                            sectionSelect.append(option);
+                        });
+                    },
+                    error: function () {
+                        alert('Error retrieving sections.');
+                    }
+                });
+            }
+
+
+        });
+    </script>
+
+}
+

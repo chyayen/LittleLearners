@@ -1,0 +1,405 @@
+﻿@model ELearning.Models.StoryModel
+@{
+    ViewBag.Title = "Add New Story";
+}
+
+@section Styles {
+    <link href="~/Content/summernote/summernote-bs5.min.css" rel="stylesheet" />
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item">Stories</li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+
+    <div class="card">
+        <div class="card-body pt-3">
+            @Html.Raw(TempData["AlertMessage"])
+            <form id="formAddStory" class="g-3">
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                        @Html.TextBox("Title", "", new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Subtitle</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control", rows = "4" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Cover Page</label>
+                    <div class="col-sm-10">
+                        @Html.TextBox("CoverImage", "", new { @class = "form-control", type = "file", accept = ".png,.jpg,.jpeg" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Class</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownList("ClassID", new SelectList(Model.ClassList, "Value", "Text"), "-- Select --", new { @class = "form-select", required = "" })
+                    </div>
+                </div>
+
+                <!-- Section Dropdown -->
+                <div class="row mb-3" id="sectionContainer" style="display:none;">
+                    <label class="col-sm-2 col-form-label">Sections</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="SectionIDs" name="SectionIDs" multiple required>
+                            <!-- Options will be dynamically loaded here -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Student Multi-Select -->
+                <div class="row mb-3" id="studentContainer" style="display:none;">
+                    <label class="col-sm-2 col-form-label">Students</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="StudentIDs" name="StudentIDs" multiple required>
+                            <!-- Students will be dynamically populated here -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Content</label>
+                    <div class="col-sm-10">
+                        @Html.TextArea("Content", new { @class = "form-control", rows = "20" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Think Time <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The question should focus on the story's opening and refrain from adding question from the last part of the story."><i class="bi bi-info-circle"></i></a></label>
+                    <div class="col-sm-10">
+                        @Html.TextArea("RandomQuestion", new { @class = "form-control", rows = "4" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="chkAnswers" class="col-sm-2 col-form-label">Multiple Choice Options for Think Time</label>
+                    <div class="col-sm-10">
+                        <div class="input-group mb-2">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" name="answers[]" value="1" aria-label="Checkbox for correct answer">
+                            </div>
+                            <input type="text" class="form-control" id="RandomAnswerOption1" name="RandomAnswerOption1" value="" aria-describedby="answer-info">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" name="answers[]" value="2" aria-label="Checkbox for correct answer">
+                            </div>
+                            <input type="text" class="form-control" id="RandomAnswerOption2" name="RandomAnswerOption2" value="" aria-describedby="answer-info">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" name="answers[]" value="3" aria-label="Checkbox for correct answer">
+                            </div>
+                            <input type="text" class="form-control" id="RandomAnswerOption3" name="RandomAnswerOption3" value="" aria-describedby="answer-info">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" name="answers[]" value="4" aria-label="Checkbox for correct answer">
+                            </div>
+                            <input type="text" class="form-control" id="RandomAnswerOption4" name="RandomAnswerOption4" value="" aria-describedby="answer-info">
+                        </div>
+                        <div class="form-text" id="answer-info"><small>Please select the correct answer.</small></div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="RandomQuestionHint" class="col-sm-2 col-form-label">Think Time Hint</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.RandomQuestionHint, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Incomplete</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckIncomplete">
+                            <label class="form-check-label" for="flexSwitchCheckIncomplete">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mt-5">
+                    <label for="inputText" class="col-sm-2 col-form-label">&nbsp;</label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-sm btn-primary" id="btnAddStory">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    <script src="~/Content/summernote/summernote-bs5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Content').summernote({
+                height: 300,  // set the height of the editor
+                callbacks: {
+                    onImageUpload: function (files) {
+                        uploadImage(files[0]);
+                    },
+                    onChange: function (contents, $editable) {
+                        // Add the class 'fb-page-content' to all <p> tags inside Summernote
+                        $('#Content').next().find('p').each(function () {
+                            $(this).addClass('fb-page-content');
+                        })
+                    }
+                }
+            });
+
+            // Initialize Select2 for dynamic field
+            $('#SectionIDs').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: "-- All --"
+            });
+            $('#StudentIDs').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: "-- All --"
+            });
+
+
+            // Populate Sections based on selected Class
+            function fetchSectionsByClass(classId) {
+                $.ajax({
+                    url: `/Admin/GetClassSectionsByClassID?classId=${classId}`,
+                    type: 'GET',
+                    success: function (sections) {
+                        $('#SectionIDs').empty();
+                        sections.forEach(section => {
+                            $('#SectionIDs').append(new Option(section.Name, section.ID));
+                        });
+                        $('#SectionIDs').find('option').prop('selected', true); // Select all students by default
+                        $('#sectionContainer').show(); // Show the section container
+
+                        const selectedSections = $('#SectionIDs').val();
+                        fetchStudentsBySection(classId, selectedSections);
+                    },
+                    error: function () {
+                        alert('Error loading sections');
+                    }
+                });
+            }
+
+            // Populate Students based on selected Sections
+            function fetchStudentsBySection(classId, sectionIds) {
+                $.ajax({
+                    url: '/Admin/GetClassStudentsBySectionID',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ classid: classId, sectionIds: sectionIds }),
+                    success: function (students) {
+                        $('#StudentIDs').empty();
+                        students.forEach(student => {
+                            $('#StudentIDs').append(new Option(student.Name, student.ID));
+                        });
+                        $('#StudentIDs').find('option').prop('selected', true); // Select all students by default
+                        $('#studentContainer').show(); // Show the student container
+                    },
+                    error: function () {
+                        alert('Error loading students');
+                    }
+                });
+            }
+
+            // Trigger fetch on Class selection
+            $('#ClassID').change(function () {
+                const classId = $(this).val();
+                if (classId) {
+                    fetchSectionsByClass(classId);
+                }
+            });
+
+            // Trigger fetch on Section selection
+            $('#SectionIDs').change(function () {
+                const selectedSections = $(this).val();
+                const classId = $('#ClassID').val();
+                fetchStudentsBySection(classId, selectedSections);
+                $('#StudentIDs').empty(); // Clear students if no sections are selected
+            });
+
+
+
+            @*// Function will be called on button click with id btnAddStory
+            $("#btnAddStory").click(function () {
+                // Constructing the story model with additional fields for SectionID and Student IDs
+                var storyModel = {
+                    Title: $("#Title").val(), // Reading text box values using jQuery
+                    Content: $("#Content").val(),
+                    ClassID: $("#ClassID").val() != null ? parseInt($("#ClassID").val()) : 0,
+                    SelectedSectionIds: $("#SectionIDs").val() ? $("#SectionIDs").val().map(Number) : [], // Selected section
+                    SelectedStudentIds: $("#StudentIDs").val() ? $("#StudentIDs").val().map(Number) : [] // Selected students as an array of integers
+                };
+
+                $.ajax({
+                    type: "POST", // HTTP POST Method
+                    url: "@Url.Action("SaveStory", "Admin")", // Controller action for saving the story
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({
+                        model: storyModel,
+                        action: "add"
+                    }),
+                    dataType: 'json',
+                    beforeSend: function () {
+                        Swal.showLoading();
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            Swal.fire({
+                                icon: "success",
+                                title: result.message,
+                            }).then(function () {
+                                window.location.href = "@Url.Action("ManageStories", "Admin")";
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: result.message,
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: "error",
+                            title: "An error occurred while saving the story.",
+                        });
+                    }
+                });
+            });*@
+
+            $("#btnAddStory").click(function () {
+                // Create a FormData object to handle the file upload and other data
+                var formData = new FormData();
+                var randomQuestion = $("#RandomQuestion").val();
+                var randomAnswerOption1 = $("#RandomAnswerOption1").val();
+                var randomAnswerOption2 = $("#RandomAnswerOption2").val();
+                var randomAnswerOption3 = $("#RandomAnswerOption3").val();
+                var randomAnswerOption4 = $("#RandomAnswerOption4").val();
+                var randomCorrectAnswer = "";
+                var correctAnswer = 0;
+                $('[name="answers[]"]').each(function () {
+                    if ($(this).prop('checked') == true) {
+                        correctAnswer = $(this).val();
+                        randomCorrectAnswer = $(`#RandomAnswerOption${correctAnswer}`).val();
+                    }
+                });
+
+                if (correctAnswer == 0 && randomQuestion != "" && randomAnswerOption1 != "" && randomAnswerOption2 != "" && randomAnswerOption3 != "" && randomAnswerOption4 != "") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Please select one correct answer for think time options.",
+                    });
+                    return;
+                }
+
+                // Append the properties from storyModel 
+                formData.append("Title", $("#Title").val());
+                formData.append("ClassID", $("#ClassID").val());
+                formData.append("Content", $("#Content").val());
+                formData.append("RandomQuestion", $("#RandomQuestion").val());
+                formData.append("RandomAnswerOption1", randomAnswerOption1);
+                formData.append("RandomAnswerOption2", randomAnswerOption2);
+                formData.append("RandomAnswerOption3", randomAnswerOption3);
+                formData.append("RandomAnswerOption4", randomAnswerOption4);
+                formData.append("RandomCorrectAnswer", randomCorrectAnswer);
+                formData.append("RandomQuestionHint", $("#RandomQuestionHint").val());
+                formData.append("Subtitle", $("#Subtitle").val());
+                formData.append("SelectedSectionIds", JSON.stringify($("#SectionIDs").val() ? $("#SectionIDs").val().map(Number) : []));
+                formData.append("SelectedStudentIds", JSON.stringify($("#StudentIDs").val() ? $("#StudentIDs").val().map(Number) : []));
+
+                // Append the CoverImage file if it’s selected
+                var coverImageFile = $("#CoverImage")[0].files[0];
+                if (coverImageFile) {
+                    formData.append("CoverImage", coverImageFile);
+                }
+
+                formData.append("action", "add");
+                formData.append("Incomplete", $("#flexSwitchCheckIncomplete").is(":checked"));
+
+                // Perform AJAX request with FormData
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SaveStory", "Admin")",
+                    contentType: false,  // Required for FormData
+                    processData: false,  // Required for FormData
+                    data: formData,
+                    beforeSend: function () {
+                        Swal.showLoading();
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            Swal.fire({
+                                icon: "success",
+                                title: result.message,
+                            }).then(function () {
+                                window.location.href = "@Url.Action("ManageStories", "Admin")";
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: result.message,
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "An error occurred while saving the story.",
+                            text: xhr.responseText
+                        });
+                    }
+                });
+            });
+
+            //Handle selecting one correcting answer
+            let answers = document.querySelectorAll("input[name='answers[]']");
+            answers.forEach(b => b.addEventListener("change", tick));
+            function tick(e) {
+                let state = e.target.checked; // save state of changed checkbox
+                answers.forEach(b => b.checked = false); // clear all checkboxes
+                e.target.checked = state; // restore state of changed checkbox
+            }
+
+
+        });
+
+        // Image upload function
+        function uploadImage(file) {
+            var data = new FormData();
+            data.append("file", file);
+
+            $.ajax({
+                url: '/Admin/UploadStoryImages',  // Your upload URL
+                type: 'POST',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (url) {
+                    $('#Content').summernote('insertImage', url);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Error uploading image: ' + textStatus);
+                }
+            });
+        }
+    </script>
+
+}
+

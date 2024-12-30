@@ -1,0 +1,1200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ELearning</RootNamespace>
+    <AssemblyName>ELearning</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.102.3.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.102.3\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.27.3.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.27.3\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.11.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.0.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.0.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.9.0.0\lib\net462\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Asio.2.2.1\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Core.2.2.1\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Lame, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Lame.2.1.0\lib\netstandard2.0\NAudio.Lame.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Midi.2.2.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Wasapi.2.2.1\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinForms.2.2.1\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.6.0.0\lib\net461\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.8.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="XLParser, Version=1.5.2.0, Culture=neutral, PublicKeyToken=63397e1e46bb91b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLParser.1.5.2\lib\net461\XLParser.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdSharp, Version=0.8.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.1\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="Models\SectionViewModel.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ClassViewModel.cs" />
+    <Compile Include="Models\StoryViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
+    <Compile Include="Models\TeacherViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\admin_template\css\style.css" />
+    <Content Include="Content\admin_template\img\apple-touch-icon.png" />
+    <Content Include="Content\admin_template\img\card.jpg" />
+    <Content Include="Content\admin_template\img\favicon.png" />
+    <Content Include="Content\admin_template\img\logo.png" />
+    <Content Include="Content\admin_template\img\messages-1.jpg" />
+    <Content Include="Content\admin_template\img\messages-2.jpg" />
+    <Content Include="Content\admin_template\img\messages-3.jpg" />
+    <Content Include="Content\admin_template\img\news-1.jpg" />
+    <Content Include="Content\admin_template\img\news-2.jpg" />
+    <Content Include="Content\admin_template\img\news-3.jpg" />
+    <Content Include="Content\admin_template\img\news-4.jpg" />
+    <Content Include="Content\admin_template\img\news-5.jpg" />
+    <Content Include="Content\admin_template\img\not-found.svg" />
+    <Content Include="Content\admin_template\img\product-1.jpg" />
+    <Content Include="Content\admin_template\img\product-2.jpg" />
+    <Content Include="Content\admin_template\img\product-3.jpg" />
+    <Content Include="Content\admin_template\img\product-4.jpg" />
+    <Content Include="Content\admin_template\img\product-5.jpg" />
+    <Content Include="Content\admin_template\img\profile-img.jpg" />
+    <Content Include="Content\admin_template\img\slides-1.jpg" />
+    <Content Include="Content\admin_template\img\slides-2.jpg" />
+    <Content Include="Content\admin_template\img\slides-3.jpg" />
+    <Content Include="Content\admin_template\js\main.js" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.amd.js" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.common.js" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.css" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.esm.js" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.js" />
+    <Content Include="Content\admin_template\vendor\apexcharts\apexcharts.min.js" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\bootstrap-icons.css" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\bootstrap-icons.min.css" />
+    <Content Include="Content\admin_template\vendor\boxicons\css\animations.css" />
+    <Content Include="Content\admin_template\vendor\boxicons\css\boxicons.css" />
+    <Content Include="Content\admin_template\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="Content\admin_template\vendor\boxicons\css\transformations.css" />
+    <Content Include="Content\admin_template\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.cjs" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.js" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.umd.js" />
+    <Content Include="Content\admin_template\vendor\chart.js\chunks\helpers.segment.cjs" />
+    <Content Include="Content\admin_template\vendor\chart.js\chunks\helpers.segment.js" />
+    <Content Include="Content\admin_template\vendor\chart.js\helpers.cjs" />
+    <Content Include="Content\admin_template\vendor\chart.js\helpers.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.common.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.common.min.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.min.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.min.mjs" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.mjs" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.min.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.simple.js" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.simple.min.js" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\bmap.js" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\bmap.min.js" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\dataTool.js" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\dataTool.min.js" />
+    <Content Include="Content\admin_template\vendor\quill\quill.bubble.css" />
+    <Content Include="Content\admin_template\vendor\quill\quill.core.css" />
+    <Content Include="Content\admin_template\vendor\quill\quill.core.js" />
+    <Content Include="Content\admin_template\vendor\quill\quill.core.js.LICENSE.txt" />
+    <Content Include="Content\admin_template\vendor\quill\quill.js" />
+    <Content Include="Content\admin_template\vendor\quill\quill.js.LICENSE.txt" />
+    <Content Include="Content\admin_template\vendor\quill\quill.snow.css" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.css" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.svg" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.symbol.svg" />
+    <Content Include="Content\admin_template\vendor\simple-datatables\simple-datatables.js" />
+    <Content Include="Content\admin_template\vendor\simple-datatables\style.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\icons\default\icons.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\icons\default\icons.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\icons\default\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\models\dom\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\models\dom\model.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\models\dom\model.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\accordion\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\accordion\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\accordion\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\advlist\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\anchor\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autolink\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autoresize\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autosave\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\charmap\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\codesample\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\code\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\code\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\directionality\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\js\emojis.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\fullscreen\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ar.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\bg_BG.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ca.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\cs.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\da.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\de.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\el.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\en.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\es.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\eu.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\fa.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\fi.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\fr_FR.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\he_IL.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\hi.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\hr.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\hu_HU.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\id.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\it.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ja.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\kk.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ko_KR.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ms.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\nb_NO.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\nl.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\pl.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\pt_BR.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\pt_PT.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ro.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\ru.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\sk.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\sl_SI.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\sv_SE.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\th_TH.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\tr.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\uk.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\vi.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\zh_CN.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\js\i18n\keynav\zh_TW.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\image\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\image\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\importcss\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\insertdatetime\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\link\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\link\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\lists\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\lists\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\media\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\media\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\nonbreaking\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\pagebreak\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\preview\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\preview\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\quickbars\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\quickbars\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\quickbars\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\save\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\save\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\searchreplace\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\table\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\table\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualblocks\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualchars\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\wordcount\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\dark\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\dark\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\dark\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\default\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\default\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\default\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\document\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\document\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\document\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5-dark\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5-dark\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5-dark\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\tinymce-5\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\writer\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\writer\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\content\writer\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.inline.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.inline.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.shadowdom.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.shadowdom.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.inline.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.inline.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.shadowdom.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.shadowdom.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\oxide\skin.shadowdom.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.inline.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.inline.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.inline.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.inline.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.inline.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\content.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.shadowdom.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.shadowdom.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css" />
+    <Content Include="Content\admin_template\vendor\tinymce\themes\silver\index.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\themes\silver\theme.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\themes\silver\theme.min.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\tinymce.js" />
+    <Content Include="Content\admin_template\vendor\tinymce\tinymce.min.js" />
+    <Content Include="Content\select2\select2-bootstrap-5-theme.css" />
+    <Content Include="Content\select2\select2-bootstrap-5-theme.min.css" />
+    <Content Include="Content\select2\select2-bootstrap-5-theme.rtl.css" />
+    <Content Include="Content\select2\select2-bootstrap-5-theme.rtl.min.css" />
+    <Content Include="Content\select2\select2.css" />
+    <Content Include="Content\select2\select2.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Content\summernote\lang\summernote-ar-AR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-az-AZ.js" />
+    <Content Include="Content\summernote\lang\summernote-az-AZ.min.js" />
+    <Content Include="Content\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Content\summernote\lang\summernote-bg-BG.min.js" />
+    <Content Include="Content\summernote\lang\summernote-bn-BD.js" />
+    <Content Include="Content\summernote\lang\summernote-bn-BD.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Content\summernote\lang\summernote-ca-ES.min.js" />
+    <Content Include="Content\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Content\summernote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Content\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Content\summernote\lang\summernote-da-DK.min.js" />
+    <Content Include="Content\summernote\lang\summernote-de-CH.js" />
+    <Content Include="Content\summernote\lang\summernote-de-CH.min.js" />
+    <Content Include="Content\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Content\summernote\lang\summernote-de-DE.min.js" />
+    <Content Include="Content\summernote\lang\summernote-el-GR.js" />
+    <Content Include="Content\summernote\lang\summernote-el-GR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-en-US.js" />
+    <Content Include="Content\summernote\lang\summernote-en-US.min.js" />
+    <Content Include="Content\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Content\summernote\lang\summernote-es-ES.min.js" />
+    <Content Include="Content\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Content\summernote\lang\summernote-es-EU.min.js" />
+    <Content Include="Content\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Content\summernote\lang\summernote-fa-IR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Content\summernote\lang\summernote-fi-FI.min.js" />
+    <Content Include="Content\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Content\summernote\lang\summernote-fr-FR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Content\summernote\lang\summernote-gl-ES.min.js" />
+    <Content Include="Content\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Content\summernote\lang\summernote-he-IL.min.js" />
+    <Content Include="Content\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Content\summernote\lang\summernote-hr-HR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Content\summernote\lang\summernote-hu-HU.min.js" />
+    <Content Include="Content\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Content\summernote\lang\summernote-id-ID.min.js" />
+    <Content Include="Content\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Content\summernote\lang\summernote-it-IT.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Content\summernote\lang\summernote-ja-JP.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Content\summernote\lang\summernote-ko-KR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Content\summernote\lang\summernote-lt-LT.min.js" />
+    <Content Include="Content\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Content\summernote\lang\summernote-lt-LV.min.js" />
+    <Content Include="Content\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Content\summernote\lang\summernote-mn-MN.min.js" />
+    <Content Include="Content\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Content\summernote\lang\summernote-nb-NO.min.js" />
+    <Content Include="Content\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Content\summernote\lang\summernote-nl-NL.min.js" />
+    <Content Include="Content\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Content\summernote\lang\summernote-pl-PL.min.js" />
+    <Content Include="Content\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Content\summernote\lang\summernote-pt-BR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Content\summernote\lang\summernote-pt-PT.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Content\summernote\lang\summernote-ro-RO.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Content\summernote\lang\summernote-ru-RU.min.js" />
+    <Content Include="Content\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Content\summernote\lang\summernote-sk-SK.min.js" />
+    <Content Include="Content\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Content\summernote\lang\summernote-sl-SI.min.js" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS.min.js" />
+    <Content Include="Content\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Content\summernote\lang\summernote-sv-SE.min.js" />
+    <Content Include="Content\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Content\summernote\lang\summernote-ta-IN.min.js" />
+    <Content Include="Content\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Content\summernote\lang\summernote-th-TH.min.js" />
+    <Content Include="Content\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Content\summernote\lang\summernote-tr-TR.min.js" />
+    <Content Include="Content\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Content\summernote\lang\summernote-uk-UA.min.js" />
+    <Content Include="Content\summernote\lang\summernote-uz-UZ.js" />
+    <Content Include="Content\summernote\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Content\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Content\summernote\lang\summernote-vi-VN.min.js" />
+    <Content Include="Content\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Content\summernote\lang\summernote-zh-CN.min.js" />
+    <Content Include="Content\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Content\summernote\lang\summernote-zh-TW.min.js" />
+    <Content Include="Content\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Content\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Content\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Content\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Content\summernote\summernote-bs4.css" />
+    <Content Include="Content\summernote\summernote-bs4.js" />
+    <Content Include="Content\summernote\summernote-bs4.min.css" />
+    <Content Include="Content\summernote\summernote-bs4.min.js" />
+    <Content Include="Content\summernote\summernote-bs5.css" />
+    <Content Include="Content\summernote\summernote-bs5.js" />
+    <Content Include="Content\summernote\summernote-bs5.min.css" />
+    <Content Include="Content\summernote\summernote-bs5.min.js" />
+    <Content Include="Content\summernote\summernote-lite.css" />
+    <Content Include="Content\summernote\summernote-lite.js" />
+    <Content Include="Content\summernote\summernote-lite.min.css" />
+    <Content Include="Content\summernote\summernote-lite.min.js" />
+    <Content Include="Content\summernote\summernote.css" />
+    <Content Include="Content\summernote\summernote.js" />
+    <Content Include="Content\summernote\summernote.min.css" />
+    <Content Include="Content\summernote\summernote.min.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\web_template\css\main.css" />
+    <Content Include="Content\web_template\img\about-2.jpg" />
+    <Content Include="Content\web_template\img\about.jpg" />
+    <Content Include="Content\web_template\img\apple-touch-icon.png" />
+    <Content Include="Content\web_template\img\bg-home-2.gif" />
+    <Content Include="Content\web_template\img\bg-home.jpg" />
+    <Content Include="Content\web_template\img\book-flip.gif" />
+    <Content Include="Content\web_template\img\boy-reading.png" />
+    <Content Include="Content\web_template\img\detail-2.gif" />
+    <Content Include="Content\web_template\img\childrenstories.jpg" />
+    <Content Include="Content\web_template\img\course-1.jpg" />
+    <Content Include="Content\web_template\img\course-2.jpg" />
+    <Content Include="Content\web_template\img\course-3.jpg" />
+    <Content Include="Content\web_template\img\course-details.jpg" />
+    <Content Include="Content\web_template\img\events-item-1.jpg" />
+    <Content Include="Content\web_template\img\events-item-2.jpg" />
+    <Content Include="Content\web_template\img\favicon.png" />
+    <Content Include="Content\web_template\img\girl-reading.png" />
+    <Content Include="Content\web_template\img\hero-bg.jpg" />
+    <Content Include="Content\web_template\img\kids-books.png" />
+    <Content Include="Content\web_template\img\logo.png" />
+    <Content Include="Content\web_template\img\detail-1.gif" />
+    <Content Include="Content\web_template\img\readingsentencesandpassages.jpg" />
+    <Content Include="Content\web_template\img\sequencing.jpg" />
+    <Content Include="Content\web_template\img\tabs\tab-1.png" />
+    <Content Include="Content\web_template\img\tabs\tab-2.png" />
+    <Content Include="Content\web_template\img\tabs\tab-3.png" />
+    <Content Include="Content\web_template\img\tabs\tab-4.png" />
+    <Content Include="Content\web_template\img\tabs\tab-5.png" />
+    <Content Include="Content\web_template\img\team\team-1.jpg" />
+    <Content Include="Content\web_template\img\team\team-2.jpg" />
+    <Content Include="Content\web_template\img\team\team-3.jpg" />
+    <Content Include="Content\web_template\img\team\team-4.jpg" />
+    <Content Include="Content\web_template\img\team\team-5.jpg" />
+    <Content Include="Content\web_template\img\team\team-6.jpg" />
+    <Content Include="Content\web_template\img\testimonials\testimonials-1.jpg" />
+    <Content Include="Content\web_template\img\testimonials\testimonials-2.jpg" />
+    <Content Include="Content\web_template\img\testimonials\testimonials-3.jpg" />
+    <Content Include="Content\web_template\img\testimonials\testimonials-4.jpg" />
+    <Content Include="Content\web_template\img\testimonials\testimonials-5.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-1-2.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-1.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-2-2.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-2.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-3-2.jpg" />
+    <Content Include="Content\web_template\img\trainers\trainer-3.jpg" />
+    <Content Include="Content\web_template\img\bg-home-1.gif" />
+    <Content Include="Content\web_template\img\two.png" />
+    <Content Include="Content\web_template\js\main.js" />
+    <Content Include="Content\web_template\vendor\aos\aos.cjs.js" />
+    <Content Include="Content\web_template\vendor\aos\aos.css" />
+    <Content Include="Content\web_template\vendor\aos\aos.esm.js" />
+    <Content Include="Content\web_template\vendor\aos\aos.js" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\bootstrap-icons.css" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\bootstrap-icons.min.css" />
+    <Content Include="Content\web_template\vendor\glightbox\css\glightbox.css" />
+    <Content Include="Content\web_template\vendor\glightbox\css\glightbox.min.css" />
+    <Content Include="Content\web_template\vendor\glightbox\js\glightbox.js" />
+    <Content Include="Content\web_template\vendor\glightbox\js\glightbox.min.js" />
+    <Content Include="Content\web_template\vendor\purecounter\purecounter_vanilla.js" />
+    <Content Include="Content\web_template\vendor\swiper\swiper-bundle.min.css" />
+    <Content Include="Content\web_template\vendor\swiper\swiper-bundle.min.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\Users\defaultstudentimage.png" />
+    <Content Include="Images\Users\jamest.jpg" />
+    <Content Include="Images\Users\karena.jpg" />
+    <Content Include="Scripts\bootstrap-color-mode.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\web_template\vendor\aos\aos.js.map" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\bootstrap-icons.json" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\bootstrap-icons.scss" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\web_template\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <Content Include="Content\web_template\vendor\purecounter\purecounter_vanilla.js.map" />
+    <Content Include="Content\web_template\vendor\swiper\swiper-bundle.min.js.map" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ar.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\be-cyrl.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\be-latn.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ca.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\cs.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\da.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\de.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\el.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\en.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\es.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\et.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\fa.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\fi.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\fr.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\he.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\hi.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\hr.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\hu.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\hy.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\id.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\it.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ja.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ka.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ko.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\lt.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\lv.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ms.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\nb.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\nl.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\pl.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\pt-br.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\pt.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\rs.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ru.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\se.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\sk.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\sl.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\sq.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\th.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\tr.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\ua.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\vi.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\zh-cn.json" />
+    <Content Include="Content\admin_template\vendor\apexcharts\locales\zh-tw.json" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\bootstrap-icons.json" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\bootstrap-icons.scss" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\admin_template\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <Content Include="Content\admin_template\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="Content\admin_template\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="Content\admin_template\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="Content\admin_template\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.cjs.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.js.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\chart.umd.js.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\chunks\helpers.segment.cjs.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\chunks\helpers.segment.js.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\helpers.cjs.map" />
+    <Content Include="Content\admin_template\vendor\chart.js\helpers.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.common.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.esm.mjs.map" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\echarts.simple.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\bmap.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\extension\dataTool.js.map" />
+    <Content Include="Content\admin_template\vendor\echarts\package.json" />
+    <Content Include="Content\admin_template\vendor\quill\quill.bubble.css.map" />
+    <Content Include="Content\admin_template\vendor\quill\quill.core.css.map" />
+    <Content Include="Content\admin_template\vendor\quill\quill.core.js.map" />
+    <Content Include="Content\admin_template\vendor\quill\quill.js.map" />
+    <Content Include="Content\admin_template\vendor\quill\quill.snow.css.map" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.eot" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.glyph.json" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.less" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.ttf" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.woff" />
+    <Content Include="Content\admin_template\vendor\remixicon\remixicon.woff2" />
+    <Content Include="Content\admin_template\vendor\tinymce\bower.json" />
+    <Content Include="Content\admin_template\vendor\tinymce\CHANGELOG.md" />
+    <Content Include="Content\admin_template\vendor\tinymce\composer.json" />
+    <Content Include="Content\admin_template\vendor\tinymce\license.md" />
+    <Content Include="Content\admin_template\vendor\tinymce\package.json" />
+    <Content Include="Content\admin_template\vendor\tinymce\README.md" />
+    <Content Include="Content\summernote\font\summernote.eot" />
+    <Content Include="Content\summernote\font\summernote.hash" />
+    <Content Include="Content\summernote\font\summernote.ttf" />
+    <Content Include="Content\summernote\font\summernote.woff" />
+    <Content Include="Content\summernote\font\summernote.woff2" />
+    <Content Include="Content\summernote\lang\summernote-ar-AR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-az-AZ.js.map" />
+    <Content Include="Content\summernote\lang\summernote-bg-BG.js.map" />
+    <Content Include="Content\summernote\lang\summernote-bn-BD.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ca-ES.js.map" />
+    <Content Include="Content\summernote\lang\summernote-cs-CZ.js.map" />
+    <Content Include="Content\summernote\lang\summernote-da-DK.js.map" />
+    <Content Include="Content\summernote\lang\summernote-de-CH.js.map" />
+    <Content Include="Content\summernote\lang\summernote-de-DE.js.map" />
+    <Content Include="Content\summernote\lang\summernote-el-GR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-en-US.js.map" />
+    <Content Include="Content\summernote\lang\summernote-es-ES.js.map" />
+    <Content Include="Content\summernote\lang\summernote-es-EU.js.map" />
+    <Content Include="Content\summernote\lang\summernote-fa-IR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-fi-FI.js.map" />
+    <Content Include="Content\summernote\lang\summernote-fr-FR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-gl-ES.js.map" />
+    <Content Include="Content\summernote\lang\summernote-he-IL.js.map" />
+    <Content Include="Content\summernote\lang\summernote-hr-HR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-hu-HU.js.map" />
+    <Content Include="Content\summernote\lang\summernote-id-ID.js.map" />
+    <Content Include="Content\summernote\lang\summernote-it-IT.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ja-JP.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ko-KR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-lt-LT.js.map" />
+    <Content Include="Content\summernote\lang\summernote-lt-LV.js.map" />
+    <Content Include="Content\summernote\lang\summernote-mn-MN.js.map" />
+    <Content Include="Content\summernote\lang\summernote-nb-NO.js.map" />
+    <Content Include="Content\summernote\lang\summernote-nl-NL.js.map" />
+    <Content Include="Content\summernote\lang\summernote-pl-PL.js.map" />
+    <Content Include="Content\summernote\lang\summernote-pt-BR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-pt-PT.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ro-RO.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ru-RU.js.map" />
+    <Content Include="Content\summernote\lang\summernote-sk-SK.js.map" />
+    <Content Include="Content\summernote\lang\summernote-sl-SI.js.map" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS-Latin.js.map" />
+    <Content Include="Content\summernote\lang\summernote-sr-RS.js.map" />
+    <Content Include="Content\summernote\lang\summernote-sv-SE.js.map" />
+    <Content Include="Content\summernote\lang\summernote-ta-IN.js.map" />
+    <Content Include="Content\summernote\lang\summernote-th-TH.js.map" />
+    <Content Include="Content\summernote\lang\summernote-tr-TR.js.map" />
+    <Content Include="Content\summernote\lang\summernote-uk-UA.js.map" />
+    <Content Include="Content\summernote\lang\summernote-uz-UZ.js.map" />
+    <Content Include="Content\summernote\lang\summernote-vi-VN.js.map" />
+    <Content Include="Content\summernote\lang\summernote-zh-CN.js.map" />
+    <Content Include="Content\summernote\lang\summernote-zh-TW.js.map" />
+    <Content Include="Content\summernote\summernote-bs4.css.map" />
+    <Content Include="Content\summernote\summernote-bs4.js.map" />
+    <Content Include="Content\summernote\summernote-bs5.css.map" />
+    <Content Include="Content\summernote\summernote-bs5.js.map" />
+    <Content Include="Content\summernote\summernote-lite.css.map" />
+    <Content Include="Content\summernote\summernote-lite.js.map" />
+    <Content Include="Content\summernote\summernote.css.map" />
+    <Content Include="Content\summernote\summernote.js.map" />
+    <Content Include="Content\select2\LICENSE" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1-13.3.js" />
+    <Content Include="Scripts\jquery-ui-1.13.3.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\select2\i18n\af.js" />
+    <Content Include="Scripts\select2\i18n\ar.js" />
+    <Content Include="Scripts\select2\i18n\az.js" />
+    <Content Include="Scripts\select2\i18n\bg.js" />
+    <Content Include="Scripts\select2\i18n\bn.js" />
+    <Content Include="Scripts\select2\i18n\bs.js" />
+    <Content Include="Scripts\select2\i18n\ca.js" />
+    <Content Include="Scripts\select2\i18n\cs.js" />
+    <Content Include="Scripts\select2\i18n\da.js" />
+    <Content Include="Scripts\select2\i18n\de.js" />
+    <Content Include="Scripts\select2\i18n\dsb.js" />
+    <Content Include="Scripts\select2\i18n\el.js" />
+    <Content Include="Scripts\select2\i18n\en.js" />
+    <Content Include="Scripts\select2\i18n\eo.js" />
+    <Content Include="Scripts\select2\i18n\es.js" />
+    <Content Include="Scripts\select2\i18n\et.js" />
+    <Content Include="Scripts\select2\i18n\eu.js" />
+    <Content Include="Scripts\select2\i18n\fa.js" />
+    <Content Include="Scripts\select2\i18n\fi.js" />
+    <Content Include="Scripts\select2\i18n\fr.js" />
+    <Content Include="Scripts\select2\i18n\gl.js" />
+    <Content Include="Scripts\select2\i18n\he.js" />
+    <Content Include="Scripts\select2\i18n\hi.js" />
+    <Content Include="Scripts\select2\i18n\hr.js" />
+    <Content Include="Scripts\select2\i18n\hsb.js" />
+    <Content Include="Scripts\select2\i18n\hu.js" />
+    <Content Include="Scripts\select2\i18n\hy.js" />
+    <Content Include="Scripts\select2\i18n\id.js" />
+    <Content Include="Scripts\select2\i18n\is.js" />
+    <Content Include="Scripts\select2\i18n\it.js" />
+    <Content Include="Scripts\select2\i18n\ja.js" />
+    <Content Include="Scripts\select2\i18n\ka.js" />
+    <Content Include="Scripts\select2\i18n\km.js" />
+    <Content Include="Scripts\select2\i18n\ko.js" />
+    <Content Include="Scripts\select2\i18n\lt.js" />
+    <Content Include="Scripts\select2\i18n\lv.js" />
+    <Content Include="Scripts\select2\i18n\mk.js" />
+    <Content Include="Scripts\select2\i18n\ms.js" />
+    <Content Include="Scripts\select2\i18n\nb.js" />
+    <Content Include="Scripts\select2\i18n\ne.js" />
+    <Content Include="Scripts\select2\i18n\nl.js" />
+    <Content Include="Scripts\select2\i18n\pa.js" />
+    <Content Include="Scripts\select2\i18n\pl.js" />
+    <Content Include="Scripts\select2\i18n\ps.js" />
+    <Content Include="Scripts\select2\i18n\pt-BR.js" />
+    <Content Include="Scripts\select2\i18n\pt.js" />
+    <Content Include="Scripts\select2\i18n\ro.js" />
+    <Content Include="Scripts\select2\i18n\ru.js" />
+    <Content Include="Scripts\select2\i18n\sk.js" />
+    <Content Include="Scripts\select2\i18n\sl.js" />
+    <Content Include="Scripts\select2\i18n\sq.js" />
+    <Content Include="Scripts\select2\i18n\sr-Cyrl.js" />
+    <Content Include="Scripts\select2\i18n\sr.js" />
+    <Content Include="Scripts\select2\i18n\sv.js" />
+    <Content Include="Scripts\select2\i18n\te.js" />
+    <Content Include="Scripts\select2\i18n\th.js" />
+    <Content Include="Scripts\select2\i18n\tk.js" />
+    <Content Include="Scripts\select2\i18n\tr.js" />
+    <Content Include="Scripts\select2\i18n\uk.js" />
+    <Content Include="Scripts\select2\i18n\vi.js" />
+    <Content Include="Scripts\select2\i18n\zh-CN.js" />
+    <Content Include="Scripts\select2\i18n\zh-TW.js" />
+    <Content Include="Scripts\select2\select2.full.js" />
+    <Content Include="Scripts\select2\select2.full.min.js" />
+    <Content Include="Scripts\select2\select2.js" />
+    <Content Include="Scripts\select2\select2.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.all.js" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.all.min.js" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.css" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.js" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Scripts\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Scripts\tts.js" />
+    <Content Include="Views\Admin\Questions.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\Register.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Admin\ManageStories.cshtml" />
+    <Content Include="Views\Admin\EditStory.cshtml" />
+    <Content Include="Views\Admin\Answers.cshtml" />
+    <Content Include="Views\Story\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Story\Detail.cshtml" />
+    <Content Include="Views\Story\Question.cshtml" />
+    <Content Include="Views\Admin\ManageStudents.cshtml" />
+    <Content Include="Views\Admin\UploadStory.cshtml" />
+    <Content Include="Uploads\StoryFormat.xlsx" />
+    <Content Include="Views\Admin\AddStudent.cshtml" />
+    <Content Include="Views\Admin\EditStudent.cshtml" />
+    <Content Include="Views\Admin\ManageClasses.cshtml" />
+    <Content Include="Views\Admin\AddStory.cshtml" />
+    <Content Include="Views\Admin\TrackStudentProgress.cshtml" />
+    <Content Include="Views\Admin\EvaluateStudentSubmissions.cshtml" />
+    <Content Include="Views\Admin\AccountSettings.cshtml" />
+    <Content Include="Views\Admin\ManageTeachers.cshtml" />
+    <Content Include="Views\Admin\EditClass.cshtml" />
+    <Content Include="Views\Admin\AddTeacher.cshtml" />
+    <Content Include="Views\Admin\EditTeacher.cshtml" />
+    <Content Include="Views\Story\QuizHistory.cshtml" />
+    <Content Include="Views\Story\QuizHistoryAttempt.cshtml" />
+    <Content Include="Views\Story\QuizHistoryAttemptDetail.cshtml" />
+    <Content Include="Views\Admin\StudentSubmissions.cshtml" />
+    <Content Include="Views\Story\Category.cshtml" />
+    <Content Include="Views\Admin\LatestStudentSubmission.cshtml" />
+    <Content Include="Views\Admin\StudentSubmissionHistory.cshtml" />
+    <Content Include="Views\Admin\StudentSubmissionHistoryDetail.cshtml" />
+    <Content Include="Views\Admin\StudentSubmissionRandomQuestion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Uploads\Stories\" />
+    <Folder Include="Uploads\StoryCovers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\admin_template\vendor\tinymce\tinymce.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51450</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NAudio.Lame.2.1.0\build\NAudio.Lame.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NAudio.Lame.2.1.0\build\NAudio.Lame.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\NAudio.Lame.2.1.0\build\NAudio.Lame.targets" Condition="Exists('..\packages\NAudio.Lame.2.1.0\build\NAudio.Lame.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

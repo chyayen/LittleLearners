@@ -1,0 +1,71 @@
+﻿@model ELearning.Models.QuizHistoryViewModel
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Quiz History";
+}
+
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Stories Story Details Section -->
+<section id="stories-story-details" class="stories-story-details section">
+
+    <div class="container">
+        <div id="quizhistory">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-secondary">
+                        <tr> 
+                            <th scope="col">Story</th>
+                            <th scope="col">Attempt</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Stories.Count > 0)
+                        {
+                            foreach (var item in Model.Stories)
+                            {
+                                <tr id="tr_@item.ID"> 
+                                    <td class="align-middle">@Html.Raw(item.Title)</td>
+                                    <td class="align-middle">@item.QuizAttempt</td> 
+                                    <td><a href="@Url.Action("QuizHistoryAttempt", "Story", new { id = item.ID })" class="btn btn-sm btn-primary">View</a></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="2" class="align-middle text-center">No records found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (Model.Stories.Count > 25)
+            {
+                @Html.Raw("Page" + (Model.Stories.PageCount < Model.Stories.PageNumber ? 0 : Model.Stories.PageNumber) + " of " + Model.Stories.PageCount)
+                @Html.PagedListPager(Model.Stories, page => Url.Action("ManageStudents", new { page }))
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+    </script>
+
+
+}

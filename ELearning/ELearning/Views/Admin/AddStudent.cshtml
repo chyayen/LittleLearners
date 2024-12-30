@@ -1,0 +1,189 @@
+﻿@model ELearning.Models.StudentModel
+@{
+    ViewBag.Title = "Add New Student";
+}
+
+@section Styles {
+    <link href="~/Content/Site.css" rel="stylesheet">   
+    
+ }
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item">Students</li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+
+    <div class="card">
+        <div class="card-body pt-3">
+            @Html.Raw(TempData["AlertMessage"])
+
+            @using (Html.BeginForm("AddStudent", "Admin", FormMethod.Post, new { @class = "g-3", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">User Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Class</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(m => m.ClassID, new SelectList(Model.ClassList, "Value", "Text"), "-- Select --", new { @class = "form-select", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Section</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="SectionID" name="SectionID" required data-selected-section="0">
+                            <!-- Pre-selected SectionID -->
+                            <option value="">-- Select --</option>
+                            <!-- Sections will be dynamically loaded here -->
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Profile Image</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.ImageFile, new { @class = "form-control", type = "file", accept = "image/jpg, image/png, image/jpeg" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                <i class="bi bi-eye" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "passwordError" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="ConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword">
+                                <i class="bi bi-eye" id="confirmPasswordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "confirmPasswordError" })
+                    </div>
+                </div>
+
+
+                <div class="row mt-5">
+                    <label for="inputText" class="col-sm-2 col-form-label">&nbsp;</label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-sm btn-primary" id="btnAddStudent">Add</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            var classId = $('#ClassID').val(); // Get the pre-selected class ID (if any)
+
+            // Function to load sections based on class ID
+            function loadSections(classId) {
+                // Clear the current section options
+                $('#SectionID').empty().append('<option value="">-- Select --</option>');
+
+                if (classId) {
+                    // Perform an AJAX call to get the sections for the selected class
+                    $.ajax({
+                        url: '@Url.Action("GetSectionsByClass", "Admin")', // Your MVC controller action
+                        type: 'GET',
+                        data: { classId: classId },
+                        success: function (data) {
+                            // Populate the sections dropdown with the data
+                            $.each(data, function (i, section) {
+                                $('#SectionID').append($('<option>', {
+                                    value: section.SectionID,
+                                    text: section.SectionName
+                                }));
+                            });
+
+                            // If a section is already selected, set it
+                            var selectedSectionId = $('#SectionID').data('selected-section');
+                            if (selectedSectionId) {
+                                $('#SectionID').val(selectedSectionId);
+                            }
+                        },
+                        error: function () {
+                            alert('Error loading sections.');
+                        }
+                    });
+                }
+            }
+
+            // Load sections on page load if a class is already selected
+            if (classId) {
+                loadSections(classId);
+            }
+
+            // Load sections when the class dropdown changes
+            $('#ClassID').change(function () {
+                var selectedClassId = $(this).val();
+                loadSections(selectedClassId);
+            });
+
+            document.getElementById("togglePassword").addEventListener("click", function () {
+                const passwordField = document.getElementById("Password");
+                const passwordIcon = document.getElementById("passwordIcon");
+                const isPasswordVisible = passwordField.type === "password";
+
+                passwordField.type = isPasswordVisible ? "text" : "password";
+                passwordIcon.classList.toggle("bi-eye", !isPasswordVisible);
+                passwordIcon.classList.toggle("bi-eye-slash", isPasswordVisible);
+            });
+
+            document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+                const confirmPasswordField = document.getElementById("ConfirmPassword");
+                const confirmPasswordIcon = document.getElementById("confirmPasswordIcon");
+                const isConfirmPasswordVisible = confirmPasswordField.type === "password";
+
+                confirmPasswordField.type = isConfirmPasswordVisible ? "text" : "password";
+                confirmPasswordIcon.classList.toggle("bi-eye", !isConfirmPasswordVisible);
+                confirmPasswordIcon.classList.toggle("bi-eye-slash", isConfirmPasswordVisible);
+            });
+
+
+        });
+    </script>
+
+}
+
+
+

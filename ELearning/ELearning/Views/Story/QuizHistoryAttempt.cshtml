@@ -1,0 +1,73 @@
+﻿@model ELearning.Models.QuizGradeByStudentViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = $"Quiz Attempt of '{Model.StoryTitle}'";
+}
+
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Stories Section -->
+<section id="courses" class="courses section">
+
+    <div class="container">
+
+        <div class="row">
+
+            @if (Model.QuizGradeList.Count > 0)
+            {
+                foreach (var item in Model.QuizGradeList)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3" data-aos="zoom-in">
+                        <div class="course-item">
+                            <div class="course-content">
+                                <h3><a href="@Url.Action("QuizHistoryAttemptDetail", "Story", new { id = ViewContext.RouteData.Values["id"], attempt = item.Attempt })">Attempt: @item.Attempt</a></h3>
+                                <div class="description" id="story_@item.ID" style="padding:3rem;">
+                                    <div style="justify-content: center;display: flex;">
+                                        <div role="progressbar" aria-valuenow="@item.GradePercentage" aria-valuemin="0" aria-valuemax="100" style="--value: @Html.Raw((int)item.GradePercentage)"></div>
+                                    </div>
+                                    <p style="margin-top:1rem;color:red;">Remarks: @Html.Raw(item.GradePercentage == 0 ? "Under Review" : (!string.IsNullOrEmpty(item.Remarks) ? item.Remarks : ""))</p>
+                                     
+                                </div>
+
+                                @if (item.GradePercentage > 0)
+                                {
+                                <div class="trainer justify-content-between align-items-center">
+                                    <div class="trainer-profile align-items-center">
+                                        <a href="javascript:void(0)" class="trainer-link"><small>Checked By: @item.CheckedBy</small></a> 
+                                    </div>
+                                    <div class="trainer-profile align-items-center"> 
+                                        <a href="javascript:void(0)" class="trainer-link"><small>Checked On: @item.DateChecked.ToString("MM/dd/yyyy hh:mm tt")</small></a>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div> <!-- End Story Item-->
+                }
+            }
+            else
+            {
+
+            }
+
+        </div>
+
+    </div>
+
+</section><!-- /Stories Section -->
+
+@section Scripts {
+    <script> 
+    </script>
+}

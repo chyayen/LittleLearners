@@ -1,0 +1,198 @@
+﻿@model ELearning.Models.TeacherModel
+@{
+    ViewBag.Title = "Add New Teacher";
+}
+
+@section Styles {
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("ManageTeachers")">Teachers</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+
+    <div class="card">
+        <div class="card-body pt-3">
+            @Html.Raw(TempData["AlertMessage"])
+
+            @using (Html.BeginForm("AddTeacher", "Admin", FormMethod.Post, new { @class = "g-3", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">User Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Class</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(m => m.ClassIDs, new SelectList(Model.ClassList, "Value", "Text"), new { @class = "form-select", required = "", multiple = "" })
+                    </div>
+                </div>
+
+                <!-- Div where sections for each class will be generated -->
+                <div id="sectionsContainer"></div>
+
+                <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Profile Image</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.ImageFile, new { @class = "form-control", type = "file", accept = "image/jpg, image/png, image/jpeg" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                <i class="bi bi-eye" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "passwordError" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="ConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword">
+                                <i class="bi bi-eye" id="confirmPasswordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "confirmPasswordError" })
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <label for="inputText" class="col-sm-2 col-form-label">&nbsp;</label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-sm btn-primary" id="btnAddTeacher">Add</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#ClassIDs').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: "-- Select --",
+                closeOnSelect: false,
+            });
+
+            // Event listener for when the user selects or deselects a class
+            $('#ClassIDs').change(function () {
+                var selectedClasses = $(this).val(); // Get selected class IDs
+
+                // Clear the sectionsContainer
+                $('#sectionsContainer').empty();
+
+                // For each selected class, create a new dropdown for sections
+                $.each(selectedClasses, function (index, classId) {
+                    // Get the class name (the selected option's text)
+                    var className = $('#ClassIDs option[value="' + classId + '"]').text();
+
+                    // Create a new div for each class
+                    var sectionDiv = $('<div class="row mb-3"></div>');
+
+                    // Create a label with the class name
+                    var label = $('<label class="col-sm-2 col-form-label">Select Section for ' + className + '</label>');
+
+                    // Create a select dropdown with a properly named "name" attribute
+                    var select = $('<div class="col-sm-10"><select class="form-select" id="ClassSectionSelections_' + classId + '_SectionID" name="ClassSectionSelections[' + classId + '].SectionID" required></select></div>');
+
+                    // Create a hidden field for classid per sectionid
+                    var hfClassID = $('<input type="hidden" name="ClassSectionSelections[' + classId + '].ClassID" value="' + classId + '" />');
+
+                    // Append the label and select to the sectionDiv
+                    sectionDiv.append(label);
+                    sectionDiv.append(select);
+                    sectionDiv.append(hfClassID);
+
+                    // Add the sectionDiv to the sectionsContainer
+                    $('#sectionsContainer').append(sectionDiv);
+
+                    // Now we need to fetch the sections for the selected class via AJAX
+                    $.ajax({
+                        url: '/Admin/GetSectionsByClass', // Server action to get sections for each class
+                        type: 'POST',
+                        data: {
+                            classId: classId
+                        },
+                        success: function (data) {
+                            // Populate the corresponding section dropdown with the returned data
+                            var sectionSelect = $('#ClassSectionSelections_' + classId + '_SectionID');
+                            sectionSelect.empty(); // Clear the dropdown
+
+                            // Append options to the select element
+                            $.each(data, function (index, section) {
+                                sectionSelect.append('<option value="' + section.SectionID + '">' + section.SectionName + '</option>');
+                            });
+                        },
+                        error: function () {
+                            alert('Error retrieving sections.');
+                        }
+                    });
+                });
+            });
+
+            document.getElementById("togglePassword").addEventListener("click", function () {
+                const passwordField = document.getElementById("Password");
+                const passwordIcon = document.getElementById("passwordIcon");
+                const isPasswordVisible = passwordField.type === "password";
+
+                passwordField.type = isPasswordVisible ? "text" : "password";
+                passwordIcon.classList.toggle("bi-eye", !isPasswordVisible);
+                passwordIcon.classList.toggle("bi-eye-slash", isPasswordVisible);
+            });
+
+            document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+                const confirmPasswordField = document.getElementById("ConfirmPassword");
+                const confirmPasswordIcon = document.getElementById("confirmPasswordIcon");
+                const isConfirmPasswordVisible = confirmPasswordField.type === "password";
+
+                confirmPasswordField.type = isConfirmPasswordVisible ? "text" : "password";
+                confirmPasswordIcon.classList.toggle("bi-eye", !isConfirmPasswordVisible);
+                confirmPasswordIcon.classList.toggle("bi-eye-slash", isConfirmPasswordVisible);
+            });
+        });
+    </script>
+
+
+}
+
+
+

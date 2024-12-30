@@ -1,0 +1,343 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|c:\\xampp\\htdocs\\elearning 0006\\elearning 0006\\elearning\\elearning\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\addstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\addstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\story\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\story\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\models\\storyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\models\\storyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\trackstudentprogress.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\trackstudentprogress.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\questions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\questions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\uploadstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\uploadstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\shared\\_layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\shared\\_layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\models\\teacherviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\models\\teacherviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\admin\\editstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\admin\\editstory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\models\\studentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\models\\studentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\models\\accountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\models\\accountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\elearning\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3B82FB0C-66C4-470D-BE1F-73AE8E69B7DE}|ELearning\\ELearning.csproj|solutionrelative:elearning\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TeacherViewModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\TeacherViewModel.cs",
+              "RelativeDocumentMoniker": "ELearning\\Models\\TeacherViewModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\TeacherViewModel.cs",
+              "RelativeToolTip": "ELearning\\Models\\TeacherViewModel.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAuwCAAAAB7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T09:29:55.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StoryController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\StoryController.cs",
+              "RelativeDocumentMoniker": "ELearning\\Controllers\\StoryController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\StoryController.cs",
+              "RelativeToolTip": "ELearning\\Controllers\\StoryController.cs",
+              "ViewState": "AQIAABEEAAAAAAAAAAAcwFYBAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T11:29:03.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UploadStory.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\UploadStory.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\UploadStory.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\UploadStory.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\UploadStory.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T04:51:43.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "ELearning\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "ELearning\\Controllers\\AdminController.cs",
+              "ViewState": "AQIAALIJAAAAAAAAAAAqwM8JAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T09:12:45.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Login.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\Login.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Login.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T13:35:46.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StoryViewModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\StoryViewModel.cs",
+              "RelativeDocumentMoniker": "ELearning\\Models\\StoryViewModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\StoryViewModel.cs",
+              "RelativeToolTip": "ELearning\\Models\\StoryViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T02:05:21.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddStory.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\AddStory.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\AddStory.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\AddStory.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\AddStory.cshtml",
+              "ViewState": "AQIAADcBAAAAAAAAAAAAAKQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T04:10:49.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Story\\Detail.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Story\\Detail.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Story\\Detail.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Story\\Detail.cshtml",
+              "ViewState": "AQIAALcAAAAAAAAAAAAqwM0AAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T13:05:52.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TrackStudentProgress.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\TrackStudentProgress.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\TrackStudentProgress.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\TrackStudentProgress.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\TrackStudentProgress.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T01:56:10.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAIAwwB4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T09:46:15.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Questions.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Questions.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\Questions.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Questions.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\Questions.cshtml",
+              "ViewState": "AQIAAFcDAAAAAAAAAAAAAHoDAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T10:30:01.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ELearning\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ELearning\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAuwFwAAABpAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T09:12:26.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Register.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\Register.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\Register.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\Register.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAxwA0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T09:12:51.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_LayoutMain.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Shared\\_LayoutMain.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Shared\\_LayoutMain.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Shared\\_LayoutMain.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Shared\\_LayoutMain.cshtml",
+              "ViewState": "AQIAAI0AAAAAAAAAAIAwwKMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T10:02:24.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EditStory.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\EditStory.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Admin\\EditStory.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Admin\\EditStory.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Admin\\EditStory.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAPyUwHcAAABeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T09:20:17.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "StudentViewModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\StudentViewModel.cs",
+              "RelativeDocumentMoniker": "ELearning\\Models\\StudentViewModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\StudentViewModel.cs",
+              "RelativeToolTip": "ELearning\\Models\\StudentViewModel.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAiwCgAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T09:17:32.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AccountViewModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\AccountViewModel.cs",
+              "RelativeDocumentMoniker": "ELearning\\Models\\AccountViewModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Models\\AccountViewModel.cs",
+              "RelativeToolTip": "ELearning\\Models\\AccountViewModel.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAqwDUAAAB7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T09:16:18.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAABBwAgAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T13:14:20.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Web.config",
+              "RelativeDocumentMoniker": "ELearning\\Web.config",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Web.config",
+              "RelativeToolTip": "ELearning\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-06T12:54:06.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "ELearning\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\ELearning 0006\\ELearning 0006\\ELearning\\ELearning\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "ELearning\\Views\\Account\\Register.cshtml",
+              "ViewState": "AQIAAI8AAAAAAAAAALiUwPMAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T12:52:17.637Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

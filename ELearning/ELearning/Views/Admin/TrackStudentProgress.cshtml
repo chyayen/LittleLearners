@@ -1,0 +1,123 @@
+﻿@model ELearning.Models.StudentTrackingViewModel
+@{
+    ViewBag.Title = "Track Student Progress"; 
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("ManageStudents")">Students</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="card">
+        <div class="card-body pt-3">
+            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()"><i class="bi bi-arrow-left-circle"></i> Back</button>
+            <h5 class="card-title">@Html.Raw(Model != null ? Model.StudentTrackingList.Select(m => m.StudentName).FirstOrDefault() : "")</h5>
+            <!-- Column Chart -->
+            <div id="columnChart"></div>
+
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#columnChart"), {
+                        series: [{
+                            name: 'Quiz Result',
+                            data: @Html.Raw(Json.Encode(Model.StudentTrackingList.OrderBy(m => m.StoryTitle).Select(m => m.ResultPercentage).ToArray()))
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 400
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '55%',
+                                endingShape: 'rounded',
+                                colors: {
+                                    ranges: [{
+                                        from: 0,
+                                        to: 70,
+                                        color: '#FF4560' // Red color for values below 70
+                                    }]
+                                }
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        stroke: {
+                            show: true,
+                            width: 2,
+                            colors: ['transparent']
+                        },
+                        xaxis: {
+                            name: 'Story Title',
+                            categories: @Html.Raw(Json.Encode(Model.StudentTrackingList.OrderBy(m => m.StoryTitle).Select(m => m.StoryTitle).ToArray())),
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'percentage'
+                            }
+                        },
+                        fill: {
+                            opacity: 1
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (val) {
+                                    return val + " %"
+                                }
+                            }
+                        }
+                    }).render();
+                });
+            </script>
+            <!-- End Column Chart -->
+
+        </div>
+    </div>
+
+    <div class="card"> 
+        <div class="card-body">
+            <h5 class="card-title">Assigned Stories</h5>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Story</th>
+                            <th>Score</th>
+                            <th>Grade Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.StudentAssignedStoriesAndProgressList != null && Model.StudentAssignedStoriesAndProgressList.Count > 0)
+                        {
+                            foreach (var item in Model.StudentAssignedStoriesAndProgressList)
+                            {
+                                <tr>
+                                    <td>@Html.Raw(item.StoryTitle)</td>
+                                    <td>@Html.Raw($"{item.Grade} / {item.TotalScore}")</td>
+                                    <td>@item.ResultPercentage</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">No records found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+

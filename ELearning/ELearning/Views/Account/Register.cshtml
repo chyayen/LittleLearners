@@ -1,0 +1,256 @@
+﻿@model ELearning.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Student Registration";
+}
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                    <p class="mb-0">Enter your personal details to create account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Student Registration Section -->
+<section id="contact" class="contact section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-md-center">
+
+            <div class="col col-sm-4">&nbsp;</div>
+            <div class="col col-sm-4 ">
+
+                @Html.Raw(TempData["AlertMessage"])
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "row g-3 mt-2", novalidate = "novalidate", onsubmit = "return validatePassword()" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.UserType)
+                    <div class="col-12">
+                        <label for="FullName" class="form-label">Name</label>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", required = "", autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "custom-invalid-feedback" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="Email" class="form-label">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "custom-invalid-feedback" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="ClassID" class="form-label">Class</label>
+                        @Html.DropDownListFor(m => m.ClassID, new SelectList(Model.ClassList, "Value", "Text"), "-- Select --", new { @class = "form-select", required = "" })
+                        @Html.ValidationMessageFor(m => m.ClassID, "", new { @class = "custom-invalid-feedback" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="SectionID" class="form-label">Section</label>
+                        <select class="form-select" id="SectionID" name="SectionID" required data-selected-section="0">
+                            <!-- Pre-selected SectionID -->
+                            <option value="">-- Select --</option>
+                            <!-- Sections will be dynamically loaded here -->
+                        </select>
+                        @Html.ValidationMessageFor(m => m.SectionID, "", new { @class = "custom-invalid-feedback" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="UserName" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person"></i></span>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "custom-invalid-feedback" })
+                        </div>
+                    </div>
+
+                    @*<div class="col-12">
+                        <label for="Password" class="form-label">Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "passwordError" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "confirmPasswordError" })
+                    </div>*@
+
+                    <div class="col-12">
+                        <label for="Password" class="form-label">Password</label>
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                <i class="bi bi-eye" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "passwordError" })
+                    </div>
+
+                    <div class="col-12">
+                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "" })
+                            <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword">
+                                <i class="bi bi-eye" id="confirmPasswordIcon"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "custom-invalid-feedback field-validation-valid", id = "confirmPasswordError" })
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-success w-100" type="submit">Create Account</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Already have an account? <a href="@Url.Action("Login", "Account")">Log in</a></p>
+                    </div>
+                }
+            </div><!-- End Student Registration Form -->
+            <div class="col col-sm-4">&nbsp;</div>
+
+        </div>
+
+    </div>
+
+</section><!-- /Student Registration Section -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>      
+
+    $(document).ready(function () {
+        var classId = $('#ClassID').val(); // Get the pre-selected class ID (if any)
+
+        // Function to load sections based on class ID
+        function loadSections(classId) {
+            // Clear the current section options
+            $('#SectionID').empty().append('<option value="">-- Select --</option>');
+
+            if (classId) {
+                // Perform an AJAX call to get the sections for the selected class
+                $.ajax({
+                    url: '@Url.Action("GetSectionsByClass", "Account")', // Your MVC controller action
+                    type: 'GET',
+                    data: { classId: classId },
+                    success: function (data) {
+                        // Populate the sections dropdown with the data
+                        $.each(data, function (i, section) {
+                            $('#SectionID').append($('<option>', {
+                                value: section.SectionID,
+                                text: section.SectionName
+                            }));
+                        });
+
+                        // If a section is already selected, set it
+                        var selectedSectionId = $('#SectionID').data('selected-section');
+                        if (selectedSectionId) {
+                            $('#SectionID').val(selectedSectionId);
+                        }
+                    },
+                    error: function () {
+                        alert('Error loading sections.');
+                    }
+                });
+            }
+        }
+
+        // Load sections on page load if a class is already selected
+        if (classId) {
+            loadSections(classId);
+        }
+
+        // Load sections when the class dropdown changes
+        $('#ClassID').change(function () {
+            var selectedClassId = $(this).val();
+            loadSections(selectedClassId);
+        });
+
+
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordField = document.getElementById("Password");
+            const passwordIcon = document.getElementById("passwordIcon");
+            const isPasswordVisible = passwordField.type === "password";
+
+            passwordField.type = isPasswordVisible ? "text" : "password";
+            passwordIcon.classList.toggle("bi-eye", !isPasswordVisible);
+            passwordIcon.classList.toggle("bi-eye-slash", isPasswordVisible);
+        });
+
+        document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+            const confirmPasswordField = document.getElementById("ConfirmPassword");
+            const confirmPasswordIcon = document.getElementById("confirmPasswordIcon");
+            const isConfirmPasswordVisible = confirmPasswordField.type === "password";
+
+            confirmPasswordField.type = isConfirmPasswordVisible ? "text" : "password";
+            confirmPasswordIcon.classList.toggle("bi-eye", !isConfirmPasswordVisible);
+            confirmPasswordIcon.classList.toggle("bi-eye-slash", isConfirmPasswordVisible);
+        });
+
+
+    });
+
+    //function validatePassword() {
+    //    const password = document.getElementById("Password").value;
+    //    var confirmPassword = document.getElementById("ConfirmPassword").value;
+    //    const errorMessage = document.getElementById("passwordError");
+
+    //    // Regular expression to match the password requirements
+    //    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$/;
+    //    const isValid = regex.test(password);
+
+    //    if (!isValid) {
+    //        errorMessage.innerHTML = "Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.";
+    //        //errorMessage.classList.add("text-danger"); // Optional: Apply a red color to the error message.
+    //        console.log(errorMessage.innerHTML);
+    //        return false; // Prevent form submission
+    //    }
+
+    //    // Clear the error message if validation passes
+    //    errorMessage.innerHTML = "";
+    //    return true;
+    //}
+
+    function validatePassword() {
+        const password = document.getElementById("Password").value;
+        const confirmPassword = document.getElementById("ConfirmPassword").value;
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+        // Regular expression to match the password requirements
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$/;
+        const isValid = regex.test(password);
+
+        let isValidForm = true;
+
+        // Check for password strength
+        if (!isValid) {
+            passwordError.innerHTML = "Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.";
+            passwordError.style.display = "block";
+            isValidForm = false;
+        } else {
+            passwordError.innerHTML = "";
+            passwordError.style.display = "none";
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            confirmPasswordError.innerHTML = "Passwords do not match.";
+            confirmPasswordError.style.display = "block";
+            isValidForm = false;
+        } else {
+            confirmPasswordError.innerHTML = "";
+            confirmPasswordError.style.display = "none";
+        }
+
+        return isValidForm;
+    }
+</script>
+
+}

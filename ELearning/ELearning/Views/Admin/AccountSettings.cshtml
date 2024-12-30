@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Account Settings";
+
+    Random _random = new Random();
+    var defaultImageName = Session["DefaultImageName"] != null ? Session["DefaultImageName"].ToString() : "";
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li> 
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                    <img src="@Html.Raw($"/Images/Users/{(!string.IsNullOrEmpty(defaultImageName) ? defaultImageName : "defaultstudentimage.png")}?v={_random.Next()}")" alt="Profile" class="rounded-circle">
+                    <h2>@Session["FullName"]</h2>
+                    <h3>@Session["UserType"]</h3> 
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="true" role="tab">Edit Profile</button>
+                        </li>
+                          
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content pt-2">
+                     
+                        <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit" role="tabpanel">
+
+                            <!-- Profile Edit Form -->
+                            <!-- Profile Edit Form -->
+                            @using (Html.BeginForm("AccountUpdateProfile", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="row mb-3">
+                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        @Html.TextBox("fullName", Session["FullName"], new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        @Html.TextBox("email", Session["Email"], new { @class = "form-control", type = "email" })
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <div class="pt-2">
+                                            @Html.TextBox("defaultImage", "", new { @class = "form-control", type = "file", accept = "image/*" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            }<!-- End Profile Edit Form --> 
+
+                        </div>
+                     
+                        <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
+                            <!-- Change Password Form -->
+                            @using (Html.BeginForm("AccountUpdatePassword", "Admin", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+                            {
+                                <div class="row mb-3">
+                                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        @Html.TextBox("CurrentPassword", "", new { @class = "form-control", required = "", type = "password", autocomplete = "off" })
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        @Html.TextBox("NewPassword", "", new { @class = "form-control", required = "", type = "password", autocomplete = "off" })
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        @Html.TextBox("ConfirmNewPassword", "", new { @class = "form-control", required = "", type = "password", autocomplete = "off" })
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <div id="passwordError" class="text-danger mb-3" style="display: none;">
+                                        New Passwords do not match!
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Change Password</button>
+                                </div>
+                            }<!-- End Change Password Form -->
+
+                        </div>
+
+                    </div><!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

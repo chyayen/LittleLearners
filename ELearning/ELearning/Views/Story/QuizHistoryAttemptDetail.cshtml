@@ -1,0 +1,71 @@
+﻿@model ELearning.Models.DetailedQuizGradeByStudentViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+    var detail = Model.QuizGradeDetailedList.FirstOrDefault();
+
+    ViewBag.Title = $"Quiz Attempt Detail of '{detail.StoryTitle}'";
+}
+
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Stories Story Details Section -->
+<section id="stories-story-details" class="stories-story-details section">
+
+    <div class="container" data-aos="fade-up">
+        <div id="questionnaire">
+            @if (Model.QuizGradeDetailedList.Count > 0)
+            {
+                <div class="card bg-secondary text-white mb-5">
+                    <div class="card-body">
+                        <p>Answered On: @detail.DateAnswered</p>
+                        <p>Score: @detail.Grade / @Html.Raw(Model.QuizGradeDetailedList.Count * 10)</p>
+                        <p>Average: @detail.GradePercentage %</p>
+
+                        @if (detail.GradePercentage > 0)
+                        {
+                            <p class="text-warning">REMARKS: @detail.Remarks</p>
+                            <p>Checked By: @detail.CheckedBy</p>
+                            <p>Checked On: @detail.DateChecked</p>
+                        }
+                        else
+                        {
+                            <p class="text-warning">REMARKS: Under Review</p>
+                        }
+                    </div>
+                </div>
+
+                for (int i = 0; i < Model.QuizGradeDetailedList.Count; i++)
+                {
+                    <div class="mb-3">
+                        <p>@(i+1). @Html.Raw(Model.QuizGradeDetailedList[i].StoryQuestion)</p>
+                        <div class="row">
+                            <div class="col-md-12"> 
+                                @Html.TextArea($"Answer[{Model.QuizGradeDetailedList[i].QuestionID}]", Model.QuizGradeDetailedList[i].StudentAnswer, new { @class = "form-control mb-2", rows = "4", @readonly = "" }) 
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Score</span>
+                                    <input type="number" class="form-control" placeholder="Score" aria-label="Score" aria-describedby="Score" value="@Model.QuizGradeDetailedList[i].Score" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                 
+            }
+        </div>
+    </div>
+</section>
+ 

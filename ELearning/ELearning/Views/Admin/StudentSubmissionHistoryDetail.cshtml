@@ -1,0 +1,165 @@
+﻿@model ELearning.Models.DetailedQuizGradeByStudentViewModel
+@{
+    var detail = Model.QuizGradeDetailedList.FirstOrDefault();
+
+    ViewBag.Title = $"Student Submissions History of '{detail.StoryTitle}'";
+}
+
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("ManageStories")">Stories</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("StudentSubmissions", new { id = detail.StoryID })">Student Submissions</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="card">
+        <div class="card-body pt-3">
+            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()"><i class="bi bi-arrow-left-circle"></i> Back</button>
+            <hr class="border-light-subtle" />
+            <div id="questionnaire">
+                @if (Model.QuizGradeDetailedList.Count > 0)
+                {
+                    @Html.HiddenFor(m => m.StoryID)
+                    @Html.HiddenFor(m => m.StudentID)
+                    @Html.HiddenFor(m => m.Attempt)
+                    @Html.Hidden("TotalQuestions", Model.QuizGradeDetailedList.Count)
+
+                    for (int i = 0; i < Model.QuizGradeDetailedList.Count; i++)
+                    {
+                        <div class="mb-5">
+                            <p>@(i+1). @Html.Raw(Model.QuizGradeDetailedList[i].StoryQuestion)</p>
+                            <div class="row">
+
+                                @if (Model.QuizGradeDetailedList[i].MultipleChoiceAnswers != null && Model.QuizGradeDetailedList[i].MultipleChoiceAnswers.Count > 0)
+                                {
+                                    foreach (var ans in Model.QuizGradeDetailedList[i].MultipleChoiceAnswers)
+                                    {
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="@ans.Option" name="question@(i+1)[]" id="chkAnswers_@ans.ID" @Html.Raw(ans.Option == Model.QuizGradeDetailedList[i].StudentAnswer ? "checked" : "") disabled>
+                                                <label class="form-check-label" for="chkAnswers_@ans.ID">
+                                                    @ans.Option @Html.Raw(ans.IsCorrect ? "(correct answer)" : "")
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                    @Html.TextArea($"Answer[{Model.QuizGradeDetailedList[i].AnswerID}]", Model.QuizGradeDetailedList[i].StudentAnswer, new { @class = "form-control d-none", rows = "4", @readonly = "" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Score</span>
+                                            @Html.TextBox($"Score[{Model.QuizGradeDetailedList[i].AnswerID}]", (Model.QuizGradeDetailedList[i].MultipleChoiceCorrectAnswer == Model.QuizGradeDetailedList[i].StudentAnswer ? "10" : "0"), new { @class = "form-control", min = "0", max = "10", type = "number", @readonly = "" })
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-12 mb-2">
+                                        @Html.TextArea($"Answer[{Model.QuizGradeDetailedList[i].AnswerID}]", Model.QuizGradeDetailedList[i].StudentAnswer, new { @class = "form-control", rows = "4", @readonly = "" })
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Score</span>
+                                            @Html.TextBox($"Score[{Model.QuizGradeDetailedList[i].AnswerID}]", Model.QuizGradeDetailedList[i].Score, new { @class = "form-control", min = "0", max = "10", type = "number" })
+                                        </div>
+                                    </div>
+                                }
+
+                                 
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label">Remarks</label>
+                            @Html.TextArea("Remarks", detail.Remarks, new { @class = "form-control", rows = "4" })
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-primary" id="btnSubmitEvaluation">Submit</button>
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    <script>
+        document.getElementById('btnSubmitEvaluation').addEventListener('click', function () {
+            // Collecting answers and scores
+            let questionResults = [];
+            let storyid = document.getElementById("StoryID").value;
+            let studentid = document.getElementById("StudentID").value;
+            let attempt = document.getElementById("Attempt").value;
+            let totalQuestions = document.getElementById("TotalQuestions").value;
+            let remarks = document.getElementById("Remarks").value;
+
+            // Loop through each score input field and build the payload
+            document.querySelectorAll("textarea[id^='Answer_']").forEach((answerField) => {
+                const answerid = answerField.id.match(/\d+/)[0]; // Extract the question ID from the Answer field ID
+                const answer = answerField.value; // Answer text
+
+                // Find the corresponding score input field by ID
+                const scoreField = document.getElementById(`Score_${answerid}_`);
+                const score = scoreField ? parseInt(scoreField.value) || 0 : 0; // Get score, default to 0 if not filled
+
+                questionResults.push({
+                    AnswerID: answerid,
+                    Answer: answer,
+                    Score: score
+                });
+            });
+
+            // Construct the payload
+            const questionResultModel = {
+                Questions: questionResults,
+                StoryID: storyid, // Story ID from route
+                StudentID: studentid, // Student ID from session
+                Attempt: attempt,
+                TotalQuestions: totalQuestions,
+                Remarks: remarks
+            };
+
+            // AJAX call to submit data
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("TeacherSubmitStudentGrade", "Admin")",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    model: questionResultModel
+                }),
+                dataType: 'json',
+                beforeSend: function () {
+                    Swal.showLoading();
+                },
+                success: function (result) {
+                    if (result.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: result.message,
+                        }).then(function () {
+                            location.href = '@Url.Action("StudentSubmissionHistory", "Admin", new { id = ViewContext.RouteData.Values["id"], stid = Model.StudentID })';
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: result.message,
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+
+}
+

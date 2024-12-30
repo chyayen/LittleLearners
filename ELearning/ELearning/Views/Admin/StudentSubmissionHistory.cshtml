@@ -1,0 +1,121 @@
+﻿@model ELearning.Models.StudentSubmissionHistoryViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = $"Student Submissions History - '{Model.StoryTitle}'";
+}
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("ManageStories")">Stories</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("StudentSubmissions", new { id = Model.StoryID })">Student Submissions</a></li>
+            <li class="breadcrumb-item active">@ViewBag.Title</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="card">
+        <div class="card-body pt-3">
+
+            @Html.Raw(TempData["AlertMessage"])
+
+            <button type="button" class="btn btn-sm btn-secondary mb-2" onclick="history.back()"><i class="bi bi-arrow-left-circle"></i> Back</button>
+            <button type="button" class="btn btn-sm btn-success mb-2 float-end" @Html.Raw(Model.StudentSubmissionHistories.Count > 0 ? "" : "disabled") onclick="" id="btnAllowToRetake">Allow to Retake</button>
+            <div class="table-responsive-sm">
+                <table class="table" id="tblClasses">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Attempt</th>
+                            <th scope="col">Total Questions</th>
+                            <th scope="col">Grade</th>
+                            <th scope="col">Checked By</th>
+                            <th scope="col">Date Checked</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="classesTbody">
+                        @if (Model.StudentSubmissionHistories.Count > 0)
+                        {
+                            foreach (var item in Model.StudentSubmissionHistories)
+                            {
+                                <tr>
+                                    <td class="align-middle">@item.Attempt</td>
+                                    <td class="align-middle">@item.TotalQuestions</td>
+                                    <td class="align-middle">@item.Grade</td>
+                                    <td class="align-middle">@item.CheckedByName</td>
+                                    <td class="align-middle">@(item.DateChecked.Year <= 2000 ? "" : item.DateChecked.ToString("MM/dd/yyyy hh:mm tt"))</td>
+                                    <td class="align-middle">
+                                        <a href="@Url.Action("StudentSubmissionHistoryDetail", "Admin", new { id = Model.StoryID, stid = Model.StudentID, attempt = item.Attempt })" class="btn btn-sm btn-primary">View Detail</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="align-middle text-center">No records found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (Model.StudentSubmissionHistories.Count > 0)
+            {
+                @Html.Raw("Page" + (Model.StudentSubmissionHistories.PageCount < Model.StudentSubmissionHistories.PageNumber ? 0 : Model.StudentSubmissionHistories.PageNumber) + " of " + Model.StudentSubmissionHistories.PageCount)
+                @Html.PagedListPager(Model.StudentSubmissionHistories, page => Url.Action("StudentSubmissions", new { page }))
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.getElementById('btnAllowToRetake').addEventListener('click', function () {
+            Swal.fire({
+                title: "Are you sure you want to allow the student to retake the test?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, allow retake",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let storyid = @Model.StoryID;
+                    let studentid = @Model.StudentID;
+
+                    // AJAX call to submit data
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("AllowToRetake", "Admin")",
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({
+                            storyid: storyid,
+                            studentid: studentid
+                        }),
+                        dataType: 'json',
+                        beforeSend: function () {
+                            Swal.showLoading();
+                        },
+                        success: function (result) {
+                            if (result.success) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: result.message,
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: result.message,
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+}

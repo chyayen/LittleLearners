@@ -1,0 +1,44 @@
+﻿@model List<ELearning.Models.StoryCategoryModel>
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Story Corner";
+}
+
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Stories Section -->
+<section id="features" class="features section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            @if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                        <div class="features-item">
+                            <i class="bi bi-@Html.Raw(item.Icon)"></i>
+                            <h3><a href="@Url.Action("Category", "Story", new { id = item.ID })" class="stretched-link">@item.Name</a></h3>
+                        </div>
+                    </div><!-- End Feature Item -->
+                }
+            }
+        </div>
+
+    </div>
+
+</section>
+<!-- /Stories Section -->

@@ -1,0 +1,125 @@
+﻿@model List<ELearning.Models.StoryModel>
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Stories"; //ViewBag.CategoryTitle;
+
+    var categoryid = ViewContext.RouteData.Values["id"] != null ? Convert.ToInt32(ViewContext.RouteData.Values["id"].ToString()) : 0;
+}
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Title -->
+<!-- Stories Section -->
+<section id="courses" class="courses section">
+
+    <div class="container">
+
+        <div class="row">
+
+            @if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+                        <div class="course-item">
+                            <img src="@Html.Raw(!string.IsNullOrEmpty(item.CoverImageName) ? $"/Uploads/StoryCovers/{item.CoverImageName}" : "#")" class="img-fluid @Html.Raw(!string.IsNullOrEmpty(item.CoverImageName) ? "" : "d-none")" alt="@item.Title">
+                            <div class="course-content">
+                                @Html.Hidden($"QuizAttempt[{item.ID}]", item.QuizAttempt)
+                                @Html.Hidden($"AllowToRetake[{item.ID}]", item.AllowToRetake ? "true" : "false")
+                                <h3>
+                                    @*@if (categoryid == 3)
+                                    {
+                                        if (item.QuizAttempt > 0 && !item.AllowToRetake)
+                                        {
+                                            <a href="@Url.Action("QuizHistoryAttempt", "Story", new { id = item.ID })">@item.Title</a>
+                                        }
+                                        else if (item.QuizAttempt == 0 && !item.AllowToRetake)
+                                        {
+                                            <a href="@Url.Action("Question", "Story", new { id = item.ID })">@item.Title</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Detail", "Story", new { id = item.ID })">@item.Title</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Detail", "Story", new { id = item.ID })">@item.Title</a>
+                                    }*@
+
+                                    @if (categoryid == 3 || categoryid == 5)
+                                    {
+                                        if (item.QuizAttempt > 0 && !item.AllowToRetake)
+                                        {
+                                            <a href="@Url.Action("QuizHistoryAttempt", "Story", new { id = item.ID })">@Html.Raw(item.Title)</a>
+                                        }
+                                        else 
+                                        {
+                                            <a href="@Url.Action("Question", "Story", new { id = item.ID })">@Html.Raw(item.Title)</a>
+                                        }
+                                    } 
+                                    else
+                                    {
+                                        <a href="@Url.Action("Detail", "Story", new { id = item.ID })">@Html.Raw(item.Title)</a>
+                                    }
+                                </h3>
+                                <div class="description" id="course_@item.ID">@Html.Raw(item.Content)</div>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        @*<img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">*@
+                                        <a href="javascript:void(0)" class="trainer-link">By: @item.AddedByName</a>
+                                    </div>
+                                    <div class="trainer-rank d-flex align-items-center"> 
+                                        @if (categoryid == 3)
+                                        {
+                                            if (item.QuizAttempt > 0 && !item.AllowToRetake)
+                                            {
+                                                <a href="@Url.Action("QuizHistoryAttempt", "Story", new { id = item.ID })">
+                                                     <small>@Html.Raw((item.QuizAttempt > 0 && item.CheckedBy > 0) ? "View Quiz Result" : "Pending")</small>
+                                                </a>
+                                            } 
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Story Item-->
+                }
+            }
+            else
+            {
+                <p>No Stories under this category</p>
+            }
+
+        </div>
+
+    </div>
+
+</section><!-- /Stories Section -->
+
+@section Scripts { 
+    <script>
+        $(document).ready(function () {
+            var elements = document.querySelectorAll(`.description`);
+            elements.forEach(element => {
+                var storyid = element.id.replace('course_', '');
+                var quizattempt = document.getElementById(`QuizAttempt_${storyid}_`).value;
+                var allowtoretake = document.getElementById(`AllowToRetake_${storyid}_`).value;
+                var categoryid = @categoryid;
+                if (element.innerText.length > 100) {
+                    //element.innerHTML = element.innerText.slice(0, 100) + `... <a href="/Story/${(categoryid == 3 ? (parseInt(quizattempt) > 0 && allowtoretake == "false" ? "QuizHistoryAttempt" : (parseInt(quizattempt) == 0 && allowtoretake == "false" ? "Question" : "Detail")) : "Detail")}/${storyid}">read more</a>`;
+                    element.innerHTML = element.innerText.slice(0, 100) + `... <a href="/Story/${(categoryid == 3 || categoryid == 5 ? (parseInt(quizattempt) > 0 && allowtoretake == "false" ? "QuizHistoryAttempt" : "Question") : "Detail")}/${storyid}">read more</a>`;
+                }
+            });
+        });
+    </script>
+}
